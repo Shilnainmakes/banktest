@@ -1,0 +1,53 @@
+{% load static %}
+
+<form action="action_page.php" style="border:1px solid #ccc" method="post" data-branches-url="{% url 'ajax_load_branches' %}" >
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="container">
+        <h1> Login </h1>
+        <p>Please login to your Account</p>
+        <hr>
+
+        <label><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required><br>
+
+        <label><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required><br>
+
+        <div class="button-container">
+            <a type="button" class="cancelbtn" href="{% url 'form_page' %}">Submit</a>
+            <a type="button" class="signupbtn" href="{% url 'register' %}">Register</a>
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_district").change(function () {
+        const url = $("#personForm").attr("data-branches-url");  // get the url of the `load_branches` view
+        const districtId = $(this).val();  // get the selected district ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'district_id': districtId       // add the district id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_branches` view function
+                $("#id_branch").html(data);  // replace the contents of the city input with the data that came from the server
+                /*
+
+                let html_data = '<option value="">---------</option>';
+                data.forEach(function (branch) {
+                    html_data += `<option value="${branch.id}">${branch.name}</option>`
+                });
+                console.log(html_data);
+                $("#id_branch").html(html_data);
+
+                */
+            }
+        });
+
+    });
+</script>
+</form>

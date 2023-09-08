@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>SBI </title>
+
+</head>
+<body>
+<div class="navbar">
+    <div class="centered-title">
+        <h2> Welcome to State Bank of India </h2>
+    </div>
+    <a class="btn btn-primary" href="{% url 'login' %}">Login</a>
+    <a class="btn btn-primary" href="{% url 'register' %}">Register</a>
+    <div class="dropdown">
+        <button class="dropbtn">Branches</button>
+        <div class="dropdown-content">
+            <a href="https://en.wikipedia.org/wiki/Malappuram_district">Malappuram</a>
+            <a href="https://en.wikipedia.org/wiki/Kozhikode_district">Kozhikode</a>
+            <a href="https://en.wikipedia.org/wiki/Ernakulam_district">Eranankulam</a>
+            <a href="https://en.wikipedia.org/wiki/Thrissur_district">Thrisssur</a>
+            <a href="https://en.wikipedia.org/wiki/Wayanad_district">Wayanad</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
